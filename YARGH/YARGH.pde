@@ -1,9 +1,16 @@
-boolean Wkey, Skey, Akey, Dkey, Spacekey;
+boolean Wkey, Skey, Akey, Dkey, Spacekey, Shiftkey;
 boolean mouseReleased;
 boolean hadPressed;
 gif campfire;
+Player p1;
 
-
+//color pallette
+color blue   = #28E7ED;
+color green  = #CEF255;
+color pink   = #F76DDC;
+color yellow = #FFF387;
+color black  = #000000;
+color white  = #FFFFFF;
 
 int mode;
 final int INTRO=0;
@@ -11,6 +18,9 @@ final int GAME=1;
 final int PAUSE=2;
 final int WIN=3;
 final int LOSS=4;
+
+//buttons
+Button StartB;
 
 void setup() {
   frameRate(60);
@@ -43,7 +53,6 @@ void draw() {
     win();
   } else if (mode==LOSS) {
     loss();
-  } else {
-    println("Error: mode =" + mode);
   }
+    println("mode =" + mode);
 }

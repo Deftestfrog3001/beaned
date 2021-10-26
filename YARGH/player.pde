@@ -1,78 +1,38 @@
-class Ship extends GameObject {
+class Player extends GameObject {
 
-  //Instance variables
-  PVector direction;
-  int ROFTimer, threshold;
-  int Itimer, V;
+  float speed;
+  int roomX, roomY;
 
-  //Constructors
-  Ship () {
-    lives = 3;
-    location = new PVector(width/2, height/2);
-    velocity = new PVector(0, 0);
-    direction = new PVector(0, -0.1);
-    ROFTimer = 0;
-    threshold = 1;
-    Itimer = 0;
-    V = 180;
-    size = 100;
+  Player() {
+    super();
+    loc = new PVector (width/2, height/2);
+    vel = new PVector (0, 0);
+    hp = 1;
+    speed = 5;
+    roomX = 1;
+    roomY = 1;
   }
-
-  //Behaviour Funcs
+  
   void show() {
-    pushMatrix();
-    translate(location.x, location.y);
-    rotate(direction.heading());
+    fill(black);
     noStroke();
-    fill(#ffffff);
-    triangle(-25, -12.5, -25, 12.5, 25, 0);
-    println(velocity);
-    popMatrix();
+    circle(loc.x, loc.y, 40);
   }
 
   void act() {
-    super.act();
+    
+    //super.act();
+    
+    loc.add(vel);
 
-    ROFTimer++;
-    Itimer++;
+    if (Wkey) vel.y = -speed;
+    if (Akey) vel.x = -speed;
+    if (Skey) vel.y = speed;
+    if (Dkey) vel.x = speed;
 
-    //speed limiter
-    if (velocity.mag() > 25) {
-      velocity.setMag(25);
-    }
+    if (vel.mag() > speed) vel.setMag(speed);
 
-    //movement
-    if (Wkey) {
-      velocity.add(direction);
-      //myObject.add(new Fire());
-    }
-    if (Skey) velocity.sub(direction);
-    if (Akey) direction.rotate(-radians(5));
-    if (Dkey) direction.rotate(radians(5));
-    if (Spacekey && ROFTimer > threshold) {
-      //myObject.add(new Bullet());
-      ROFTimer = 0;
-    }
-
-    //ship collision
-  //  int i = 0;
-  //  println(Itimer, V);
-  //  while (i < myObject.size()) {
-  //    GameObject myOb = myObject.get(i); 
-  //    if (myOb instanceof Asteroid) {
-  //      if (dist(location.x, location.y, myOb.location.x, myOb.location.y) <= size/2+myOb.size/2) {
-  //        if (Itimer > V) {
-  //          myOb.lives--;
-  //          lives--;
-  //          Itimer=0;
-  //        }
-  //        if (myOb.lives == 0 && size >= 12.5) {
-  //          myObject.add(new Asteroid(size/2, location.x, location.y));
-  //          myObject.add(new Asteroid(size/2, location.x, location.y));
-  //        }
-  //      }
-  //    }
-  //    i++;
-  //  }
+    if (!Wkey && !Skey) vel.y = 0;
+    if (!Akey && !Dkey) vel.x = 0;
   }
 }
