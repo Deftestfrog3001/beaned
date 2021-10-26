@@ -11,6 +11,7 @@ color pink   = #F76DDC;
 color yellow = #FFF387;
 color black  = #000000;
 color white  = #FFFFFF;
+color red    = #FF0000;
 
 int mode;
 final int INTRO=0;
@@ -30,19 +31,18 @@ void setup() {
   textAlign(CENTER, CENTER);
   imageMode(CENTER);
   colorMode(HSB, 360, 100, 100);
-  
-  campfire = new gif(5,7,"frame_","_delay-0.1s.png");
+  p1 = new Player();
+  campfire = new gif(5, 7, "frame_", "_delay-0.1s.png");
 }
 
 void draw() {
-  
-    if (mousePressed) hadPressed = true;
+
+  if (mousePressed) hadPressed = true;
   else if (hadPressed && !mousePressed) {
-     mouseReleased = true;
-     hadPressed = false;
-  }
-  else if (mouseReleased) mouseReleased = false;
-  
+    mouseReleased = true;
+    hadPressed = false;
+  } else if (mouseReleased) mouseReleased = false;
+
   if (mode==INTRO) {
     intro();
   } else if (mode==GAME) {
@@ -54,5 +54,5 @@ void draw() {
   } else if (mode==LOSS) {
     loss();
   }
-    println("mode =" + mode);
+  println("mode =" + mode);
 }

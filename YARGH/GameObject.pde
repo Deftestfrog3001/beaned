@@ -15,9 +15,9 @@ class GameObject {
     loc.add(vel);
     
     //Wall collision
-    if (loc.x < 50) loc.x = 50;
-    if (loc.x > width -50) loc.x = width -50;
-    if (loc.y < 50) loc.y = 50;
-    if (loc.y > height -50) loc.y = height -50;
+    if (loc.x < 85) loc.x = 85;
+    if (loc.x > width -85) loc.x = width -85;
+    if (loc.y < 65) loc.y = 65;
+    if (loc.y > height -65) loc.y = height -65;
   }
 }

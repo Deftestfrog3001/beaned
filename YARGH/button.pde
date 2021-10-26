@@ -19,13 +19,15 @@ class Button {
   void show() {
     //rectangle
     rectMode(CENTER);
+    noFill();
+    noStroke();
     if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-h/2 && mouseY < y+h/2) {
-      fill(highlight);
+      //fill(highlight);
     } else {
-      fill(normal);
+      //fill(normal);
     }
-    stroke(0);
-    strokeWeight(4);
+    //stroke(0);
+    //strokeWeight(4);
     rect(x, y, w, h, 30);
 
     //text label

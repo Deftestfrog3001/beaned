@@ -3,7 +3,7 @@ void intro() {
 
   //button(s)
 
-  StartB  = new Button("Start", width/8*7, height/4*3, 200, 150, black, white);
+  StartB  = new Button("Start", width/8*7, height/4*3, 200, 150, red , white);
 
   StartB.show();
 

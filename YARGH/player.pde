@@ -8,11 +8,11 @@ class Player extends GameObject {
     loc = new PVector (width/2, height/2);
     vel = new PVector (0, 0);
     hp = 1;
-    speed = 5;
+    speed = 4;
     roomX = 1;
     roomY = 1;
   }
-  
+
   void show() {
     fill(black);
     noStroke();
@@ -20,11 +20,9 @@ class Player extends GameObject {
   }
 
   void act() {
-    
-    //super.act();
-    
-    loc.add(vel);
 
+    super.act();
+    loc.add(vel);
     if (Wkey) vel.y = -speed;
     if (Akey) vel.x = -speed;
     if (Skey) vel.y = speed;
