@@ -14,8 +14,9 @@ class Player extends GameObject {
   }
 
   void show() {
-    fill(black);
-    noStroke();
+    fill(aqua);
+    strokeWeight(5);
+    stroke(red);
     circle(loc.x, loc.y, 40);
   }
 
@@ -32,5 +33,28 @@ class Player extends GameObject {
 
     if (!Wkey && !Skey) vel.y = 0;
     if (!Akey && !Dkey) vel.x = 0;
+
+    //exit detect
+    //north
+    if (northRoom != white && loc.y <= height*0.1 && loc.x >= width/2-50 && loc.x <= width/2+50) {
+      roomY = roomY - 1;
+      loc = new PVector(width/2, height*0.9-20);
+    } else if
+      //east
+      (eastRoom != white && loc.x >= width*0.9 && loc.y >= height/2-50 && loc.y <= height/2+50) {
+      println("?");
+      roomX = roomX + 1;
+      loc = new PVector(width*0.1+20, height/2);
+    } else if
+      //south
+      (southRoom != white && loc.y >= height*0.9 && loc.x >= width/2-50 && loc.x <= width/2+50) {
+      roomY = roomY + 1;
+      loc = new PVector(width/2, height*0.1+20);
+    } else if
+      //west
+      (westRoom != white && loc.x <= width*0.1 && loc.y >= height/2-50 && loc.y <= height/2+50) {
+      roomX = roomX -1;
+      loc = new PVector(width*0.9-20, height/2);
+    }
   }
 }

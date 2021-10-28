@@ -2,7 +2,16 @@ boolean Wkey, Skey, Akey, Dkey, Spacekey, Shiftkey;
 boolean mouseReleased;
 boolean hadPressed;
 gif campfire;
+PFont Pixel;
+
 Player p1;
+
+//images
+PImage map;
+color northRoom, eastRoom, southRoom, westRoom;
+
+//textures
+PImage cobble;
 
 //color pallette
 color blue   = #28E7ED;
@@ -12,6 +21,7 @@ color yellow = #FFF387;
 color black  = #000000;
 color white  = #FFFFFF;
 color red    = #FF0000;
+color aqua   = #09B6E8;
 
 int mode;
 final int INTRO=0;
@@ -32,7 +42,13 @@ void setup() {
   imageMode(CENTER);
   colorMode(HSB, 360, 100, 100);
   p1 = new Player();
+  Pixel = createFont("alagard.ttf", 1);
   campfire = new gif(5, 7, "frame_", "_delay-0.1s.png");
+  map = loadImage("map.png");
+  textFont(Pixel);
+  
+  //textures
+  cobble = loadImage("cobble.png");
 }
 
 void draw() {

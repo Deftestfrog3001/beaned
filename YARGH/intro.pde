@@ -1,9 +1,13 @@
 void intro() {
   campfire.show();
+  
+  //Title
+  textSize(75);
+  text("~MARCOS~",width/2,height*0.25);
 
   //button(s)
 
-  StartB  = new Button("Start", width/8*7, height/4*3, 200, 150, red , white);
+  StartB  = new Button("Start", width*0.9, height*0.7, 150, 100, red , white);
 
   StartB.show();
 
