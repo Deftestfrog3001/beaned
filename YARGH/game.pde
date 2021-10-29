@@ -55,6 +55,10 @@ void drawGameObjects() {
 }
 
 void drawLightLayer() {
+  fill(black);
+  noStroke();
+  DC = new DarkCell(width/2, height/2, 50);
+  DC.show();
 }
 
 void drawMiniMap() {

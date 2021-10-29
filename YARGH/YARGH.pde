@@ -2,9 +2,8 @@ boolean Wkey, Skey, Akey, Dkey, Spacekey, Shiftkey;
 boolean mouseReleased;
 boolean hadPressed;
 gif campfire;
+DarkCell DC;
 PFont Pixel;
-
-Player p1;
 
 //images
 PImage map;
@@ -32,6 +31,11 @@ final int LOSS=4;
 
 //buttons
 Button StartB;
+
+//Game objects
+ArrayList<GameObject> myObjects;
+ArrayList<DarkCell> darkness;
+Player p1;
 
 void setup() {
   frameRate(60);
