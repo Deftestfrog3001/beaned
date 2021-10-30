@@ -32,13 +32,13 @@ void drawroom() {
   if (northRoom != #ffffff) {
     ellipse(width/2, height*0.1, 100, 100);
   }
-   if (eastRoom != #ffffff) {
+  if (eastRoom != #ffffff) {
     ellipse(width*0.9, height/2, 100, 100);
   }
-   if (southRoom != #ffffff) {
+  if (southRoom != #ffffff) {
     ellipse(width/2, height*0.9, 100, 100);
   }
-   if (westRoom != #ffffff) {
+  if (westRoom != #ffffff) {
     ellipse(width*0.1, height/2, 100, 100);
   }
 
@@ -55,10 +55,10 @@ void drawGameObjects() {
 }
 
 void drawLightLayer() {
-  fill(black);
-  noStroke();
-  DC = new DarkCell(width/2, height/2, 50);
-  DC.show();
+  for (int i = 0; i < DC.size(); i ++) {
+    DarkCell dark = DC.get(i);
+    dark.show();
+  }
 }
 
 void drawMiniMap() {

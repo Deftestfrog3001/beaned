@@ -6,14 +6,15 @@ class DarkCell {
     size = s;
     x = _x;
     y = _y;
-    opacity = 0;
+    opacity = 200;
   }
-
+  
   void show() {
-   square(x,y,size); 
-  }
-
-  void act() {
-    
+    rectMode(CORNER);
+    noStroke();
+    fill(black, opacity);
+    square(x,y,size); 
+    opacity = map(dist(x, y, p1.loc.x, p1.loc.y), 0, 1, 0, 1); 
+    rectMode(CENTER);
   }
 }

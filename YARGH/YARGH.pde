@@ -2,7 +2,7 @@ boolean Wkey, Skey, Akey, Dkey, Spacekey, Shiftkey;
 boolean mouseReleased;
 boolean hadPressed;
 gif campfire;
-DarkCell DC;
+//DarkCell DC;
 PFont Pixel;
 
 //images
@@ -34,8 +34,11 @@ Button StartB;
 
 //Game objects
 ArrayList<GameObject> myObjects;
-ArrayList<DarkCell> darkness;
+ArrayList<DarkCell> DC;
 Player p1;
+
+//
+int s;
 
 void setup() {
   frameRate(60);
@@ -50,9 +53,25 @@ void setup() {
   campfire = new gif(5, 7, "frame_", "_delay-0.1s.png");
   map = loadImage("map.png");
   textFont(Pixel);
-  
+  s = 2;
+
   //textures
   cobble = loadImage("cobble.png");
+
+  //Create Darkness
+  DC = new ArrayList<DarkCell>();
+  float size = s;
+  int x = 0, y = 0;
+  while (x <= width) {
+    DC.add(new DarkCell(x, y, size));
+    
+    if (x >= width) {
+      y = y + s; 
+      x = 0;
+    } 
+    x = x + s;
+    if (y - s >= height) break;
+  }
 }
 
 void draw() {
