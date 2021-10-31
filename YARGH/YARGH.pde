@@ -1,3 +1,15 @@
+//sound
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+//sound vari
+Minim minim;
+AudioPlayer intro;
+
 boolean Wkey, Skey, Akey, Dkey, Spacekey, Shiftkey;
 boolean mouseReleased;
 boolean hadPressed;
@@ -54,6 +66,10 @@ void setup() {
   map = loadImage("map.png");
   textFont(Pixel);
   s = 2;
+  
+  //minim
+  minim = new Minim(this);
+  intro = minim.loadFile("Intro.mp3");
 
   //textures
   cobble = loadImage("cobble.png");

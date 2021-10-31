@@ -1,6 +1,10 @@
 void intro() {
   campfire.show();
   
+  //Audio
+  intro.play();
+  intro.loop();
+  
   //Title
   textSize(75);
   text("~MARCOS~",width/2,height*0.25);
