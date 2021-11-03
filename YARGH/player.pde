@@ -42,7 +42,6 @@ class Player extends GameObject {
     } else if
       //east
       (eastRoom != white && loc.x >= width*0.9 && loc.y >= height/2-50 && loc.y <= height/2+50) {
-      println("?");
       roomX = roomX + 1;
       loc = new PVector(width*0.1+20, height/2);
     } else if
