@@ -33,6 +33,7 @@ color black  = #000000;
 color white  = #FFFFFF;
 color red    = #FF0000;
 color aqua   = #09B6E8;
+color grey   = #817F7F;
 
 int mode;
 final int INTRO=0;
@@ -49,8 +50,8 @@ ArrayList<GameObject> myObjects;
 ArrayList<DarkCell> DC;
 Player p1;
 
-//
-int s;
+//cell size
+int CellSize;
 
 void setup() {
   frameRate(60);
@@ -65,8 +66,10 @@ void setup() {
   campfire = new gif(5, 7, "frame_", "_delay-0.1s.png");
   map = loadImage("map.png");
   textFont(Pixel);
-  s = 2;
-  
+
+  //cell size
+  CellSize = 3;
+
   //minim
   minim = new Minim(this);
   intro = minim.loadFile("Intro.mp3");
@@ -74,20 +77,27 @@ void setup() {
   //textures
   cobble = loadImage("cobble.png");
 
-  //Create Darkness
+  //Create DarkGrid
+  rectMode(CORNER);
   DC = new ArrayList<DarkCell>();
-  float size = s;
-  int x = 0, y = 0;
+  float size = CellSize;
+  int x = 0;
+  int y = 0;
+
   while (x <= width) {
     DC.add(new DarkCell(x, y, size));
-    
+
+    x = x + CellSize;
+    if (y - CellSize >= height) 
+      break;
+
     if (x >= width) {
-      y = y + s; 
+      y = y + CellSize; 
       x = 0;
     } 
-    x = x + s;
-    if (y - s >= height) break;
+    rectMode(CENTER);
   }
+  println(DC.size());
 }
 
 void draw() {
@@ -109,5 +119,5 @@ void draw() {
   } else if (mode==LOSS) {
     loss();
   }
-  println("mode =" + mode);
+  //println("mode =" + mode);
 }

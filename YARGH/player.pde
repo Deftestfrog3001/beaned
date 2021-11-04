@@ -2,6 +2,7 @@ class Player extends GameObject {
 
   float speed;
   int roomX, roomY;
+  Weapon myWeapon;
 
   Player() {
     super();
@@ -11,6 +12,8 @@ class Player extends GameObject {
     speed = 4;
     roomX = 1;
     roomY = 1;
+    myWeapon = new Weapon();
+    ArrayList <Weapon> weapons;
   }
 
   void show() {
@@ -42,7 +45,6 @@ class Player extends GameObject {
     } else if
       //east
       (eastRoom != white && loc.x >= width*0.9 && loc.y >= height/2-50 && loc.y <= height/2+50) {
-      println("?");
       roomX = roomX + 1;
       loc = new PVector(width*0.1+20, height/2);
     } else if
@@ -55,6 +57,12 @@ class Player extends GameObject {
       (westRoom != white && loc.x <= width*0.1 && loc.y >= height/2-50 && loc.y <= height/2+50) {
       roomX = roomX -1;
       loc = new PVector(width*0.9-20, height/2);
+    }
+
+    //fire
+    myWeapon.update();
+    if (mousePressed && mode == GAME) {
+      myWeapon.fire();
     }
   }
 }
